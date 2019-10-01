@@ -13,8 +13,8 @@ import Colors from '../constants/Colors';
 import { ShareDialog } from 'react-native-fbsdk';
 
 export default InviteModalScreen = ({isInviteModalVisible, toggleIsInviteModalVisible}) => {
-  const PLOGALONG_LINK = "http://www.plogalong.com";
-  const SHARE_LINK_CONTENT = {
+  PLOGALONG_LINK = "http://www.plogalong.com";
+  SHARE_LINK_CONTENT = {
     contentType: 'link',
     contentUrl: PLOGALONG_LINK,
     contentDescription: "Jus lil ol me, ploggin along",
@@ -26,7 +26,9 @@ export default InviteModalScreen = ({isInviteModalVisible, toggleIsInviteModalVi
   shareTo = () => {}
 
   shareLinkWithShareDialog = () => {
+    // console.log(SHARE_LINK_CONTENT);
     ShareDialog.canShow(SHARE_LINK_CONTENT).then(canShow => {
+      console.log("here");
       if (canShow) {
         return ShareDialog.show(SHARE_LINK_CONTENT);
       }

@@ -4,8 +4,9 @@ import { auth, firebase } from './init';
 import firebaseConfig from './config';
 
 export const loginWithFacebook = async () => {
+  console.log(firebaseConfig.auth.facebook.appId);
   const { type, token } = await Facebook.logInWithReadPermissionsAsync(
-    firebaseConfig.auth.facebook.appId,
+    `${firebaseConfig.auth.facebook.appId}`,
     { permissions: ['public_profile'] }
   );
 
@@ -15,6 +16,8 @@ export const loginWithFacebook = async () => {
 
     // Sign in with credential from the Facebook user.
     return auth.signInWithCredential(credential);
+  } else {
+    console.log(type);
   }
 }
 
